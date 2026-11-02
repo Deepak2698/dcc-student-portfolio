@@ -1,0 +1,40 @@
+---
+title: 'The React hooks I use every day (and one I stopped using)'
+date: '2026-08-02'
+tags: ['react', 'javascript']
+draft: false
+summary: 'useState, useEffect, useMemo, useRef and custom hooks, with small examples from real projects and the mistakes that taught me how they work.'
+---
+
+Hooks clicked for me once I stopped memorising them and started asking "what does this component need to remember?"
+
+## useState: the component's memory
+
+```jsx
+const [query, setQuery] = useState('')
+```
+
+Keep state minimal. If you can calculate something from existing state, don't store it.
+
+## useEffect: syncing with the outside world
+
+Effects are for talking to things outside React: APIs, timers, subscriptions. Always clean up:
+
+```jsx
+useEffect(() => {
+  const id = setInterval(refresh, 30000)
+  return () => clearInterval(id)
+}, [])
+```
+
+## useRef: values that shouldn't re-render
+
+Perfect for DOM elements and for remembering the previous value.
+
+## Custom hooks: my favourite
+
+`useDebounce` and `useFetch` removed most of the copy-paste in TaskFlow.
+
+## The one I stopped using
+
+I used `useMemo` everywhere "for performance". Most of it made the code harder to read and changed nothing. Now I measure first.

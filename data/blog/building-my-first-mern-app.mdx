@@ -1,0 +1,33 @@
+---
+title: 'Building my first MERN app: what I wish I knew'
+date: '2026-09-14'
+tags: ['mern', 'react', 'nodejs', 'mongodb']
+draft: false
+summary: 'Lessons from building ShopEase, a full e-commerce store with React, Express and MongoDB: project structure, auth, and the bugs that cost me a weekend.'
+---
+
+ShopEase started as a weekend idea and turned into my biggest project so far: a store with a product catalogue, cart, test payments and an admin dashboard. Here is what I learned.
+
+## 1. Plan the data before the screens
+
+I rewrote my MongoDB schemas three times because I designed pages first. Next time I'll sketch the collections (`users`, `products`, `orders`) and how they reference each other before writing any React.
+
+## 2. Keep the API boring
+
+One router per resource, one controller per route, and validation at the edge:
+
+```js
+router.post('/orders', protect, validate(orderSchema), createOrder)
+```
+
+Consistent error responses (`{ success, message }`) made the front end much simpler.
+
+## 3. Auth is harder than it looks
+
+Access tokens that expire in 15 minutes plus a refresh token in an `httpOnly` cookie kept users logged in without storing secrets in `localStorage`.
+
+## 4. Deploy early
+
+The first deploy found five bugs that never happened on my laptop: environment variables, CORS and case-sensitive file names on Linux.
+
+**Next up:** adding search with MongoDB Atlas Search and writing tests for the checkout flow.
