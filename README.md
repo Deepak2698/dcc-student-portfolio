@@ -6,7 +6,9 @@ A fast, SEO-ready portfolio and blog that every student can make their own in an
 projects with screenshots and tech tags, an About page, and a Markdown blog with code highlighting.
 Built by [DeCODE Crafters](https://decodecrafters.in) for learners in our web development courses.
 
-![DevFolio preview](public/static/images/twitter-card.png)
+| Home | Projects | Blog post |
+| --- | --- | --- |
+| ![Home](public/static/images/screenshots/home.jpg) | ![Projects](public/static/images/screenshots/projects.jpg) | ![Blog post](public/static/images/screenshots/blog.jpg) |
 
 ## Features
 
